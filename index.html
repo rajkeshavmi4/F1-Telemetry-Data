@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F1 Telemetry Analysis Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Pit Wall</p>
+        <h1>F1 Telemetry Analysis</h1>
+      </div>
+      <div class="status" id="status">Ready</div>
+    </header>
+
+    <section class="control-strip" aria-label="Session controls">
+      <label>
+        <span>Year</span>
+        <select id="yearSelect"></select>
+      </label>
+      <label>
+        <span>Grand Prix</span>
+        <select id="meetingSelect"></select>
+      </label>
+      <label>
+        <span>Session</span>
+        <select id="sessionSelect"></select>
+      </label>
+      <label>
+        <span>Driver A</span>
+        <select id="driverA"></select>
+      </label>
+      <label>
+        <span>Driver B</span>
+        <select id="driverB"></select>
+      </label>
+      <label>
+        <span>Lap</span>
+        <select id="lapSelect"></select>
+      </label>
+      <button id="loadBtn" type="button">Load telemetry</button>
+      <button id="clearCacheBtn" class="secondary" type="button">Clear cache</button>
+    </section>
+
+    <section class="hero-grid">
+      <div class="track-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Circuit</p>
+            <h2 id="sessionTitle">Select a session</h2>
+          </div>
+          <img id="circuitImage" alt="">
+        </div>
+        <canvas id="trackCanvas" width="900" height="520"></canvas>
+      </div>
+
+      <aside class="metrics-panel">
+        <div class="metric">
+          <span>Fastest loaded lap</span>
+          <strong id="fastestLap">--</strong>
+        </div>
+        <div class="metric">
+          <span>Peak speed</span>
+          <strong id="peakSpeed">--</strong>
+        </div>
+        <div class="metric">
+          <span>Throttle delta</span>
+          <strong id="throttleDelta">--</strong>
+        </div>
+        <div class="metric">
+          <span>Track temp</span>
+          <strong id="trackTemp">--</strong>
+        </div>
+      </aside>
+    </section>
+
+    <section class="charts">
+      <div class="chart-block">
+        <div class="panel-head compact">
+          <h2>Speed Trace</h2>
+          <span>km/h</span>
+        </div>
+        <canvas id="speedChart" width="900" height="300"></canvas>
+      </div>
+      <div class="chart-block">
+        <div class="panel-head compact">
+          <h2>Throttle & Brake</h2>
+          <span>%</span>
+        </div>
+        <canvas id="pedalChart" width="900" height="300"></canvas>
+      </div>
+    </section>
+
+    <section class="analysis-grid">
+      <div class="table-panel">
+        <div class="panel-head compact">
+          <h2>Corner / Mini-Sector Compare</h2>
+          <span id="sectorCount">--</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Part</th>
+                <th id="driverAHead">Driver A</th>
+                <th id="driverBHead">Driver B</th>
+                <th>Advantage</th>
+              </tr>
+            </thead>
+            <tbody id="sectorTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="table-panel">
+        <div class="panel-head compact">
+          <h2>Tyre & Track Evolution</h2>
+          <span>lap trend</span>
+        </div>
+        <canvas id="evolutionChart" width="760" height="300"></canvas>
+        <div class="stints" id="stintList"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
