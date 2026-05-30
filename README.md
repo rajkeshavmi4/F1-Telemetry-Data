@@ -43,6 +43,7 @@ http://localhost:5500
 ```
 
 ---
+<img width="763" height="902" alt="image" src="https://github.com/user-attachments/assets/62850b5a-9b13-41f3-8ab2-ab776b166601" />
 
 ## Notes
 
